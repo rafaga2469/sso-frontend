@@ -4,12 +4,16 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import ProtectedLayout from "./components/ProtectedLayout";
 import Register from "./pages/Register";
+import OAuthAuthorize from "./pages/OAuthAuthorize";
+import OAuthCallback from "./pages/OAuthCallback";
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/oauth/authorize" element={<OAuthAuthorize />} />
+      <Route path="/oauth/callback" element={<OAuthCallback />} />
       <Route
         path="/"
         element={
