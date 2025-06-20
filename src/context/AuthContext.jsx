@@ -64,7 +64,11 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const access = localStorage.getItem("access");
-    if (access) loadUser();
+    if (access) {
+      loadUser();
+    } else {
+      setIsAuthenticating(false);
+    }
   }, []);
 
   return (
