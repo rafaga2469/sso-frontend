@@ -3,7 +3,6 @@ import {
   getUserInfo,
   loginWithCookie,
   logout as apiLogout,
-  exchangeAuthorizationCode,
 } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -51,16 +50,6 @@ export const AuthProvider = ({ children }) => {
     await loadUser();
   };
 
-  const loginWithCode = async (code) => {
-    setIsAuthenticating(true);
-    const { access } = await exchangeAuthorizationCode(
-      code,
-      import.meta.env.VITE_OAUTH_REDIRECT_URI,
-      import.meta.env.VITE_OAUTH_CLIENT_ID
-    );
-    localStorage.setItem("access", access);
-    await loadUser();
-  };
 
   useEffect(() => {
     const access = localStorage.getItem("access");
@@ -72,9 +61,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider
-      value={{ user, login, loginWithCode, logout, isAuthenticating }}
-    >
+    <AuthContext.Provider value={{ user, login, logout, isAuthenticating }}>
       {children}
     </AuthContext.Provider>
   );

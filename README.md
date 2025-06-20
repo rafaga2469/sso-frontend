@@ -1,6 +1,6 @@
 # SSO Frontend
 
-Aplicación de ejemplo para autenticación simple basada en JWT y cookies utilizando React con Vite. Incluye soporte para identidad federada a través de OAuth2 con `django-oauth-toolkit`.
+Aplicación de ejemplo para autenticación simple basada en JWT y cookies utilizando React con Vite.
 
 ## Características
 
@@ -9,14 +9,11 @@ Aplicación de ejemplo para autenticación simple basada en JWT y cookies utiliz
 - Control de sesión global con React Context.
 - Rutas protegidas usando `react-router-dom`.
 - Estilos con Tailwind CSS y componentes de Heroicons.
-- Integración con OAuth2 para identidad federada.
 
 ## Requisitos
 
 - Node.js 18 o superior
-- Configurar las variables de entorno del cliente OAuth en un archivo `.env`:
-  - `VITE_OAUTH_CLIENT_ID` – identificador del cliente público registrado en el backend.
-  - `VITE_OAUTH_REDIRECT_URI` – URL de retorno autorizada para el flujo OAuth2.
+- Configurar las variables de entorno en un archivo `.env`:
   - `VITE_API_BASE` – URL base de la API del backend.
 - Un backend compatible que exponga los siguientes endpoints:
   - `POST /token/` para obtener tokens con usuario y contraseña.
