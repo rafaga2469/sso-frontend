@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { API_BASE_URL } from "../api/axios";
 
 import {
   LockClosedIcon,
@@ -15,6 +16,14 @@ export default function Login() {
 
   const navigate = useNavigate();
   const { login } = useAuth();
+  const oauthLogin = () => {
+    const params = new URLSearchParams({
+      response_type: "code",
+      client_id: import.meta.env.VITE_OAUTH_CLIENT_ID,
+      redirect_uri: import.meta.env.VITE_OAUTH_REDIRECT_URI,
+    });
+    window.location.href = `${API_BASE_URL}/o/authorize/?${params.toString()}`;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,6 +90,13 @@ export default function Login() {
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition"
           >
             Entrar
+          </button>
+          <button
+            type="button"
+            onClick={oauthLogin}
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition"
+          >
+            Entrar con identidad federada
           </button>
           <p className="text-sm text-center mt-4 text-gray-600 dark:text-gray-400">
             ¿No tienes cuenta?{" "}
