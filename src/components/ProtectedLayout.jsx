@@ -3,7 +3,7 @@ import { getGlobalLogout, useAuth } from "../context/AuthContext";
 import { useNavigate, Outlet } from "react-router-dom";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
 
-export default function ProtectedLayout({ children }) {
+export default function ProtectedLayout() {
   const { user } = useAuth();
   const navigate = useNavigate();
 

@@ -22,7 +22,7 @@ API.interceptors.request.use((config) => {
     }
 
     return config;
-});;
+});
 
 // Manejar 401 y renovar access token con cookie
 API.interceptors.response.use(

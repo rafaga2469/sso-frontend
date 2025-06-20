@@ -122,14 +122,8 @@ export default function Register() {
   );
 }
 
-function InputField({
-  label,
-  name,
-  icon: Icon,
-  value,
-  onChange,
-  type = "text",
-}) {
+function InputField({ label, name, icon, value, onChange, type = "text" }) {
+  const Icon = icon;
   return (
     <div>
       <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">

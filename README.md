@@ -1,12 +1,61 @@
-# React + Vite
+# SSO Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación de ejemplo para autenticación simple basada en JWT y cookies utilizando React con Vite.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Inicio de sesión y registro de usuarios.
+- Renovación automática de tokens mediante `refresh_token` almacenado en cookie.
+- Control de sesión global con React Context.
+- Rutas protegidas usando `react-router-dom`.
+- Estilos con Tailwind CSS y componentes de Heroicons.
 
-## Expanding the ESLint configuration
+## Requisitos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js 18 o superior
+- Un backend compatible que exponga los siguientes endpoints:
+  - `POST /token/` para obtener tokens con usuario y contraseña.
+  - `POST /token/cookie/` para obtener `access` y almacenar `refresh_token` en una cookie.
+  - `POST /token/refresh/` para refrescar el token de acceso usando la cookie.
+  - `GET /me/` para obtener la información del usuario autenticado.
+  - `POST /logout/` para cerrar sesión.
+  - `POST /register/` para registrar usuarios.
+
+## Instalación
+
+1. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+2. Inicia el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+La aplicación estará disponible normalmente en `http://localhost:5173`.
+
+## Scripts disponibles
+
+- `npm run dev` &ndash; levanta la aplicación en modo desarrollo.
+- `npm run build` &ndash; genera la versión de producción en la carpeta `dist`.
+- `npm run preview` &ndash; ejecuta un servidor para previsualizar la compilación.
+- `npm run lint` &ndash; ejecuta ESLint sobre todos los archivos fuente.
+
+## Estructura básica
+
+```
+src/
+├── api/           # Módulos para llamadas HTTP
+├── components/    # Componentes reutilizables
+├── context/       # Contexto de autenticación
+├── pages/         # Páginas principales (Login, Register, Dashboard)
+├── routes.jsx     # Definición de rutas protegidas y públicas
+└── main.jsx       # Punto de entrada de React
+```
+
+## Licencia
+
+MIT
