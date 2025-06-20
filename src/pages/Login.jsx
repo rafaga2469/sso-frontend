@@ -21,7 +21,7 @@ export default function Login() {
     try {
       await login(username, password);
       navigate("/dashboard");
-    } catch (err) {
+    } catch {
       setError("Credenciales inválidas o sesión fallida.");
     }
   };

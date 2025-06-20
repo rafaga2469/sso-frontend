@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const data = await getUserInfo(); // ya usa axios con refresh automático
       setUser(data);
-    } catch (err) {
+    } catch {
       setUser(null);
     } finally {
       setIsAuthenticating(false);
