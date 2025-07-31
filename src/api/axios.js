@@ -5,7 +5,7 @@ import { getGlobalLogout } from "../context/AuthContext";
 
 const EXCLUDED_ENDPOINTS = ["/token", "/token/cookie", "/token/refresh", "/register"];
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8000/api";
+export const API_BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8001/api";
 
 const API = axios.create({
     baseURL: API_BASE_URL,
