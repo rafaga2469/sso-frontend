@@ -43,9 +43,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (username, password) => {
+  const login = async (email, password) => {
     setIsAuthenticating(true);
-    const { access } = await loginWithCookie(username, password);
+    const { access } = await loginWithCookie(email, password);
     localStorage.setItem("access", access);
     await loadUser();
   };
