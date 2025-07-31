@@ -18,7 +18,7 @@ export default function ProtectedLayout() {
         <h1 className="text-xl font-semibold">Panel de usuario</h1>
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-600 dark:text-gray-300">
-            {user?.username}
+            {user?.email}
           </span>
           <button
             onClick={handleLogout}

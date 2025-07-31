@@ -2,14 +2,12 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   LockClosedIcon,
-  UserIcon,
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 import axios from "axios";
 
 export default function Register() {
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: "",
     confirm_password: "",
@@ -35,7 +33,6 @@ export default function Register() {
 
     try {
       await axios.post("http://localhost:8000/api/register/", {
-        username: formData.username,
         email: formData.email,
         password: formData.password,
         confirm_password: formData.confirm_password,
@@ -69,13 +66,6 @@ export default function Register() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <InputField
-            label="Usuario"
-            name="username"
-            icon={UserIcon}
-            value={formData.username}
-            onChange={handleChange}
-          />
           <InputField
             label="Email"
             name="email"
